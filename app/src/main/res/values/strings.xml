@@ -5,5 +5,7 @@
     <string name="help_number">Контактный номер телефона</string>
     <string name="help_theme">Тема</string>
     <string name="help_description">Опишите вашу проблему</string>
+    <string name="help_problem">Ваша проблема</string>
     <string name="send">Отправить</string>
+    <string name="help_problem_description">Поле для ввода описания проблемы</string>
 </resources>
