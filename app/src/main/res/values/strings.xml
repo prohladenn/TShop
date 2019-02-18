@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">T-Shop</string>
+    <string name="help_title">Помощь</string>
+    <string name="help_name">Ваше имя</string>
+    <string name="help_number">Контактный номер теелфона</string>
+    <string name="help_theme">Тема</string>
+    <string name="help_description">Опишите вашу проблему</string>
 </resources>
