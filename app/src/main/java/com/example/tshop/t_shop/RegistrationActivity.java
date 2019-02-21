@@ -61,7 +61,7 @@ public class RegistrationActivity extends AppCompatActivity {
                             Toast.LENGTH_LONG).show();
                 } else {
                     editTextRegistration.setText("");
-                    editTextRegistration.setText(R.string.register_name);
+                    editTextRegistration.setHint(R.string.register_name);
                     editTextRegistration.setInputType(InputType.TYPE_CLASS_TEXT);
                     buttonResend.setVisibility(View.INVISIBLE);
                     buttonNameListener();
