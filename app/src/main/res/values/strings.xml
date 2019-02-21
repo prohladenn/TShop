@@ -1,11 +1,18 @@
 <resources>
     <string name="app_name">T-Shop</string>
+
     <string name="help_title">Помощь</string>
     <string name="help_name">Ваше имя</string>
     <string name="help_number">Контактный номер телефона</string>
     <string name="help_theme">Тема</string>
     <string name="help_description">Опишите вашу проблему</string>
     <string name="help_problem">Ваша проблема</string>
-    <string name="send">Отправить</string>
+    <string name="help_send">Отправить</string>
     <string name="help_problem_description">Поле для ввода описания проблемы</string>
+
+    <string name="register_number">Номер телефона</string>
+    <string name="register_code">Код из СМС</string>
+    <string name="register_name">Ваше имя</string>
+    <string name="register_next">Далее</string>
+    <string name="register_resend">Отправить вопторно</string>
 </resources>
