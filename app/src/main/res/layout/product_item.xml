@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    app:cardCornerRadius="10dp">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/product_item_image_photo"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_margin="10dp"
+            android:background="#0F0"
+            android:contentDescription="Photo"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/product_item_text_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Марс молочный шоколад"
+            android:textSize="20sp"
+
+            app:layout_constraintLeft_toRightOf="@+id/product_item_image_photo"
+
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <FrameLayout
+            android:id="@+id/product_item_frame_buttons"
+            android:layout_width="160dp"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:background="#0F0"
+
+            app:layout_constraintBottom_toBottomOf="@+id/product_item_image_photo"
+            app:layout_constraintLeft_toRightOf="@+id/product_item_image_photo">
+
+            <FrameLayout
+                android:id="@+id/product_item_button_buy"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#00F" />
+
+            <LinearLayout
+                android:id="@+id/product_item_linear_buttons"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <FrameLayout
+                    android:id="@+id/product_item_button_add"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="#F00">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="+"
+                        android:textSize="30sp" />
+
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/product_item_text_count"
+                    android:layout_width="60dp"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:textSize="20sp" />
+
+                <FrameLayout
+                    android:id="@+id/product_item_button_delete"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="#F00">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="-"
+                        android:textSize="30sp" />
+
+                </FrameLayout>
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="135Р"
+            android:textSize="20sp"
+
+            app:layout_constraintBottom_toBottomOf="@+id/product_item_frame_buttons"
+            app:layout_constraintStart_toEndOf="@id/product_item_frame_buttons"
+            app:layout_constraintTop_toTopOf="@+id/product_item_frame_buttons" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.v7.widget.CardView>
+
