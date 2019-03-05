@@ -20,7 +20,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
     public ProductAdapter(List<Product> products, Activity parent) {
         this.products = products;
-        this.parent = parent;
+        ProductAdapter.parent = parent;
     }
 
     @NonNull
