@@ -33,23 +33,15 @@ public class HelpDescriptionActivity extends AppCompatActivity {
     }
 
     private void buttonBackListener() {
-        buttonBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+        buttonBack.setOnClickListener(v -> onBackPressed());
     }
 
     private void buttonCheckListener() {
-        buttonCheck.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.putExtra("text_problem", editTextProblem.getText().toString().trim());
-                setResult(RESULT_OK, intent);
-                finish();
-            }
+        buttonCheck.setOnClickListener(v -> {
+            Intent intent = new Intent();
+            intent.putExtra("text_problem", editTextProblem.getText().toString().trim());
+            setResult(RESULT_OK, intent);
+            finish();
         });
     }
 

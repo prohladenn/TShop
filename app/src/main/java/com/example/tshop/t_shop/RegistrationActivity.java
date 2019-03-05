@@ -34,54 +34,45 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
     private void buttonNumberListener() {
-        buttonRegistration.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                number = editTextRegistration.getText().toString();
-                if (number.isEmpty()) {
-                    Toast.makeText(RegistrationActivity.this, "Введите номер!",
-                            Toast.LENGTH_LONG).show();
-                } else {
-                    editTextRegistration.setText("");
-                    editTextRegistration.setHint(R.string.register_code);
-                    buttonResend.setVisibility(View.VISIBLE);
-                    buttonCodeListener();
-                }
+        buttonRegistration.setOnClickListener(v -> {
+            number = editTextRegistration.getText().toString();
+            if (number.isEmpty()) {
+                Toast.makeText(RegistrationActivity.this, "Введите номер!",
+                        Toast.LENGTH_LONG).show();
+            } else {
+                editTextRegistration.setText("");
+                editTextRegistration.setHint(R.string.register_code);
+                buttonResend.setVisibility(View.VISIBLE);
+                buttonCodeListener();
             }
         });
     }
 
     private void buttonCodeListener() {
-        buttonRegistration.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                code = editTextRegistration.getText().toString();
-                if (code.isEmpty()) {
-                    Toast.makeText(RegistrationActivity.this, "Введите код!",
-                            Toast.LENGTH_LONG).show();
-                } else {
-                    editTextRegistration.setText("");
-                    editTextRegistration.setHint(R.string.register_name);
-                    editTextRegistration.setInputType(InputType.TYPE_CLASS_TEXT);
-                    buttonResend.setVisibility(View.INVISIBLE);
-                    buttonNameListener();
-                }
+        buttonRegistration.setOnClickListener(v -> {
+            code = editTextRegistration.getText().toString();
+            if (code.isEmpty()) {
+                Toast.makeText(RegistrationActivity.this, "Введите код!",
+                        Toast.LENGTH_LONG).show();
+            } else {
+                editTextRegistration.setText("");
+                editTextRegistration.setHint(R.string.register_name);
+                editTextRegistration.setInputType(InputType.TYPE_CLASS_TEXT);
+                buttonResend.setVisibility(View.INVISIBLE);
+                buttonNameListener();
             }
         });
     }
 
     private void buttonNameListener() {
-        buttonRegistration.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                name = editTextRegistration.getText().toString();
-                if (name.isEmpty()) {
-                    Toast.makeText(RegistrationActivity.this, "Введите имя!",
-                            Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(RegistrationActivity.this, "Добро пожаловать " + name,
-                            Toast.LENGTH_LONG).show();
-                }
+        buttonRegistration.setOnClickListener(v -> {
+            name = editTextRegistration.getText().toString();
+            if (name.isEmpty()) {
+                Toast.makeText(RegistrationActivity.this, "Введите имя!",
+                        Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(RegistrationActivity.this, "Добро пожаловать " + name,
+                        Toast.LENGTH_LONG).show();
             }
         });
     }

@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -45,38 +44,27 @@ public class HelpActivity extends AppCompatActivity {
     }
 
     private void buttonBackListener() {
-        frameProblem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        frameProblem.setOnClickListener(v -> finish());
     }
 
     private void frameProblemListener() {
-        frameProblem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HelpActivity.this, HelpDescriptionActivity.class);
-                if (!textProblem.isEmpty()) {
-                    intent.putExtra("text_problem", textProblem);
-                    textProblem = "";
-                } else intent.putExtra("text_problem", "");
-                startActivityForResult(intent, 1234);
-            }
+        frameProblem.setOnClickListener(v -> {
+            Intent intent = new Intent(HelpActivity.this, HelpDescriptionActivity.class);
+            if (!textProblem.isEmpty()) {
+                intent.putExtra("text_problem", textProblem);
+                textProblem = "";
+            } else intent.putExtra("text_problem", "");
+            startActivityForResult(intent, 1234);
         });
     }
 
     private void frameSendListener() {
-        frameSend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (textProblem.isEmpty())
-                    Toast.makeText(HelpActivity.this, "Заполните отзыв!",
-                            Toast.LENGTH_LONG).show();
-                else Toast.makeText(HelpActivity.this, "Ваш отзыв отправлен!",
+        frameSend.setOnClickListener(v -> {
+            if (textProblem.isEmpty())
+                Toast.makeText(HelpActivity.this, "Заполните отзыв!",
                         Toast.LENGTH_LONG).show();
-            }
+            else Toast.makeText(HelpActivity.this, "Ваш отзыв отправлен!",
+                    Toast.LENGTH_LONG).show();
         });
     }
 
