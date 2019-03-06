@@ -4,7 +4,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginLeft="5dp"
     android:layout_marginTop="5dp"
+    android:layout_marginRight="5dp"
+    android:padding="5dp"
     app:cardCornerRadius="10dp">
 
     <android.support.constraint.ConstraintLayout
@@ -13,10 +16,10 @@
 
         <ImageView
             android:id="@+id/product_item_image_photo"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_margin="10dp"
-            android:background="#0F0"
+            android:background="@color/colorPrimary"
             android:contentDescription="Photo"
 
             app:layout_constraintBottom_toBottomOf="parent"
@@ -29,81 +32,96 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:text="Марс молочный шоколад"
-            android:textSize="20sp"
+            android:textSize="18sp"
 
             app:layout_constraintLeft_toRightOf="@+id/product_item_image_photo"
-
             app:layout_constraintTop_toTopOf="parent" />
 
         <FrameLayout
             android:id="@+id/product_item_frame_buttons"
-            android:layout_width="160dp"
-            android:layout_height="50dp"
+            android:layout_width="135dp"
+            android:layout_height="46dp"
             android:layout_margin="10dp"
-            android:background="#0F0"
 
-            app:layout_constraintBottom_toBottomOf="@+id/product_item_image_photo"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@+id/product_item_image_photo">
 
             <FrameLayout
                 android:id="@+id/product_item_button_buy"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#00F" />
+                android:layout_gravity="center"
+                android:background="@color/colorPrimary">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Купить"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="18sp" />
+
+            </FrameLayout>
 
             <LinearLayout
                 android:id="@+id/product_item_linear_buttons"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:gravity="center">
 
-                <FrameLayout
+                <android.support.v7.widget.CardView
                     android:id="@+id/product_item_button_add"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="#F00">
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    app:cardCornerRadius="22dp">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:background="@color/colorPrimary"
                         android:gravity="center"
                         android:text="+"
+                        android:textColor="@color/colorAccent"
                         android:textSize="30sp" />
 
-                </FrameLayout>
+                </android.support.v7.widget.CardView>
 
                 <TextView
                     android:id="@+id/product_item_text_count"
-                    android:layout_width="60dp"
-                    android:layout_height="50dp"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
                     android:gravity="center"
                     android:inputType="number"
-                    android:textSize="20sp" />
+                    android:textSize="18sp" />
 
-                <FrameLayout
+                <android.support.v7.widget.CardView
                     android:id="@+id/product_item_button_delete"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="#F00">
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    app:cardCornerRadius="22dp">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:background="@color/colorPrimary"
                         android:gravity="center"
                         android:text="-"
+                        android:textColor="@color/colorAccent"
                         android:textSize="30sp" />
 
-                </FrameLayout>
+                </android.support.v7.widget.CardView>
 
             </LinearLayout>
 
         </FrameLayout>
 
         <TextView
+            android:id="@+id/product_item_text_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="135Р"
-            android:textSize="20sp"
+            android:text="Бесценно"
+            android:textSize="18sp"
 
             app:layout_constraintBottom_toBottomOf="@+id/product_item_frame_buttons"
             app:layout_constraintStart_toEndOf="@id/product_item_frame_buttons"

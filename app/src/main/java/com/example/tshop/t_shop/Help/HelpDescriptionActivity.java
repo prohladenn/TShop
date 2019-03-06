@@ -1,4 +1,4 @@
-package com.example.tshop.t_shop;
+package com.example.tshop.t_shop.Help;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+
+import com.example.tshop.t_shop.R;
 
 public class HelpDescriptionActivity extends AppCompatActivity {
 

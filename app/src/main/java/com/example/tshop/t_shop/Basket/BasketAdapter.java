@@ -1,4 +1,4 @@
-package com.example.tshop.t_shop;
+package com.example.tshop.t_shop.Basket;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
@@ -11,16 +11,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.tshop.t_shop.Product.Product;
+import com.example.tshop.t_shop.R;
+
 import java.util.List;
 
-public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
+public class BasketAdapter extends RecyclerView.Adapter<BasketAdapter.ProductViewHolder> {
 
     private final List<Product> products;
     private static Activity parent;
 
-    public ProductAdapter(List<Product> products, Activity parent) {
+    public BasketAdapter(List<Product> products, Activity parent, TextView amountTextView) {
         this.products = products;
-        ProductAdapter.parent = parent;
+        BasketAdapter.parent = parent;
     }
 
     @NonNull
@@ -46,6 +49,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
         private TextView nameTextView;
         private TextView countTextView;
+        private TextView priceTextView;
         private ImageView avatarImageView;
         private FrameLayout buyButton;
         private FrameLayout addButton;
@@ -55,6 +59,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             super(itemView);
             nameTextView = itemView.findViewById(R.id.product_item_text_desc);
             countTextView = itemView.findViewById(R.id.product_item_text_count);
+            priceTextView = itemView.findViewById(R.id.product_item_text_price);
             avatarImageView = itemView.findViewById(R.id.product_item_image_photo);
             buyButton = itemView.findViewById(R.id.product_item_button_buy);
             addButton = itemView.findViewById(R.id.product_item_button_add);
@@ -62,34 +67,48 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         }
 
         private void bind(@NonNull Product product) {
+
+            inBasket();
             nameTextView.setText(product.getName());
-            countTextView.setText("1");
-            countTextView.setVisibility(View.INVISIBLE);
-            avatarImageView.setImageResource(R.drawable.ic_square_black_48dp);
-            buyButton.setOnClickListener(v -> {
-                buyButton.setVisibility(View.INVISIBLE);
-                countTextView.setVisibility(View.VISIBLE);
-                addButton.setVisibility(View.VISIBLE);
-                deleteButton.setVisibility(View.VISIBLE);
-                addButton.setOnClickListener(v1 -> {
-                    int count = Integer.valueOf(countTextView.getText().toString());
-                    if (count == product.getCount()) {
-                        Toast.makeText(parent, "Нету столько", Toast.LENGTH_SHORT).show();
-                    } else {
-                        countTextView.setText(String.format(Integer.toString(count + 1), ""));
-                    }
-                });
-                deleteButton.setOnClickListener(v1 -> {
-                    int count = Integer.valueOf(countTextView.getText().toString());
-                    if (count == 0) {
-                        bind(product);
-                    } else {
-                        countTextView.setText(String.format(Integer.toString(count - 1), ""));
-                    }
-                });
+            countTextView.setText(String.valueOf(product.getSelected()));
+            priceTextView.setText(String.valueOf(product.getPriceAmount()));
+            avatarImageView.setBackgroundResource(R.color.colorPrimary);
+
+            addButton.setOnClickListener(v1 -> {
+                int selected = Integer.valueOf(countTextView.getText().toString());
+                if (selected == product.getCount()) {
+                    Toast.makeText(parent, "Больше нет", Toast.LENGTH_SHORT).show();
+                } else {
+                    countTextView.setText(String.format(Integer.toString(selected + 1), ""));
+                }
             });
+            deleteButton.setOnClickListener(v1 -> {
+                int selected = Integer.valueOf(countTextView.getText().toString());
+                if (selected == 1) {
+                    notInBasket();
+                    buyButton.setOnClickListener(v -> {
+                        inBasket();
+                    });
+                } else {
+                    countTextView.setText(String.format(Integer.toString(selected - 1), ""));
+                }
+            });
+
+        }
+
+        void inBasket() {
+            buyButton.setVisibility(View.INVISIBLE);
+            addButton.setVisibility(View.VISIBLE);
+            deleteButton.setVisibility(View.VISIBLE);
+            countTextView.setVisibility(View.VISIBLE);
+        }
+
+        void notInBasket() {
+            countTextView.setText("1");
+            buyButton.setVisibility(View.VISIBLE);
             addButton.setVisibility(View.INVISIBLE);
             deleteButton.setVisibility(View.INVISIBLE);
+            countTextView.setVisibility(View.INVISIBLE);
         }
 
     }

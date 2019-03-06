@@ -11,11 +11,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".Basket.BasketActivity" />
         <activity android:name=".RegistrationActivity" />
-        <activity android:name=".HelpActivity" />
-        <activity android:name=".HelpDescriptionActivity" />
+        <activity android:name=".Help.HelpActivity" />
+        <activity android:name=".Help.HelpDescriptionActivity" />
         <activity
-            android:name=".ListItemActivity"
+            android:name=".Product.ProductsActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,7 +24,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

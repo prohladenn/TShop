@@ -1,4 +1,4 @@
-package com.example.tshop.t_shop;
+package com.example.tshop.t_shop.Help;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +10,8 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.tshop.t_shop.R;
 
 public class HelpActivity extends AppCompatActivity {
 

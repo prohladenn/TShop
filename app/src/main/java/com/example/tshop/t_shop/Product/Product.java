@@ -1,6 +1,8 @@
-package com.example.tshop.t_shop;
+package com.example.tshop.t_shop.Product;
 
-public class Product {
+import java.io.Serializable;
+
+public class Product implements Serializable {
 
     private String name;
     private String description;
@@ -11,6 +13,7 @@ public class Product {
     private int valueAmount;
     private String valueUnits;
     private int count;
+    private int selected;
 
     public Product(String name, String description,
                    String pictureSource, String pictureSubnail,
@@ -97,5 +100,13 @@ public class Product {
 
     public void setCount(int count) {
         this.count = count;
+    }
+
+    public int getSelected() {
+        return selected;
+    }
+
+    public void setSelected(int selected) {
+        this.selected = selected;
     }
 }
