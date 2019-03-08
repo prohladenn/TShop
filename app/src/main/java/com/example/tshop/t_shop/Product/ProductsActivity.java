@@ -56,7 +56,7 @@ public class ProductsActivity extends AppCompatActivity {
         amountCurTextView = findViewById(R.id.products_text_amount_cur);
         recyclerView = findViewById(R.id.products_recycler_view);
         products = generateStudentList();
-        productAdapter = new ProductAdapter(products, this, (view, i) -> onProductClick(i), amountTextView, amountCurTextView);
+        productAdapter = new ProductAdapter(products, this, this::onProductClick, amountTextView, amountCurTextView);
         recyclerView.setAdapter(productAdapter);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
@@ -78,7 +78,7 @@ public class ProductsActivity extends AppCompatActivity {
         buttonBack.setOnClickListener(v -> onBackPressed());
     }
 
-    private void onProductClick(int i) {
+    private void onProductClick(View view, int i) {
         blockView.setVisibility(View.VISIBLE);
         descCardView.setVisibility(View.VISIBLE);
         Product product = products.get(i);
