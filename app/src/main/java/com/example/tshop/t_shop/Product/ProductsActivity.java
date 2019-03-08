@@ -16,11 +16,10 @@ import com.example.tshop.t_shop.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ProductsActivity extends AppCompatActivity {
 
-    List<Product> products;
+    ArrayList<Product> products;
 
     ProductAdapter productAdapter;
     RecyclerView recyclerView;
@@ -69,7 +68,7 @@ public class ProductsActivity extends AppCompatActivity {
     void buttonInBasketListener() {
         buttonInBasket.setOnClickListener(v -> {
             Intent intent = new Intent(ProductsActivity.this, BasketActivity.class);
-            intent.putExtra("data", ProductAdapter.getBasket());
+            intent.putExtra("data", productAdapter.getBasket());
             intent.putExtra("sum", ProductAdapter.getAmountString());
             startActivity(intent);
         });
@@ -105,56 +104,56 @@ public class ProductsActivity extends AppCompatActivity {
     /*
         TODO ДОСТАТЬ ЭТИХ ПАРНЕЙ ИЗ БАЗЫ
          */
-    private List<Product> generateStudentList() {
-        List<Product> products = new ArrayList<>();
+    private ArrayList<Product> generateStudentList() {
+        ArrayList<Product> products = new ArrayList<>();
         products.add(
                 new Product("Name1", "Desc1",
                         "https://avatarfiles.alphacoders.com/148/14824.png",
                         "https://avatarfiles.alphacoders.com/148/14824.png",
                         111, "р",
-                        "11", "г", 1)
+                        "11", "г", 1, 0)
         );
         products.add(
                 new Product("Name2", "Desc2",
                         "https://avatarfiles.alphacoders.com/223/22359.png",
                         "https://avatarfiles.alphacoders.com/223/22359.png",
                         222, "р",
-                        "22", "г", 2)
+                        "22", "г", 2, 0)
         );
         products.add(
                 new Product("Name3", "Desc3",
                         "https://avatarfiles.alphacoders.com/223/22359.png",
                         "https://avatarfiles.alphacoders.com/223/22359.png",
                         333, "р",
-                        "33", "г", 3)
+                        "33", "г", 3, 0)
         );
         products.add(
                 new Product("Name4", "Desc4",
                         "https://avatarfiles.alphacoders.com/148/14824.png",
                         "https://avatarfiles.alphacoders.com/148/14824.png",
                         444, "р",
-                        "44", "г", 4)
+                        "44", "г", 4, 0)
         );
         products.add(
                 new Product("Name5", "Desc5",
                         "https://avatarfiles.alphacoders.com/223/22359.png",
                         "https://avatarfiles.alphacoders.com/223/22359.png",
                         555, "р",
-                        "55", "г", 5)
+                        "55", "г", 5, 0)
         );
         products.add(
                 new Product("Name6", "Desc6",
                         "https://avatarfiles.alphacoders.com/148/14824.png",
                         "https://avatarfiles.alphacoders.com/148/14824.png",
                         666, "р",
-                        "66", "г", 6)
+                        "66", "г", 6, 0)
         );
         products.add(
                 new Product("Name7", "Desc7",
                         "https://avatarfiles.alphacoders.com/223/22359.png",
                         "https://avatarfiles.alphacoders.com/223/22359.png",
                         777, "р",
-                        "77", "г", 7)
+                        "77", "г", 7, 0)
         );
         return products;
     }

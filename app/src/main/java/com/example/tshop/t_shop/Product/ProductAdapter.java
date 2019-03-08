@@ -15,20 +15,16 @@ import com.example.tshop.t_shop.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
 
-    private final List<Product> products;
+    private final ArrayList<Product> products;
     private static TextView amountTextView;
     private static TextView amountCurTextView;
     private static Activity parent;
-    private static Map<Product, Integer> basket;
     private final Listener onProductClickListener;
 
-    public ProductAdapter(List<Product> products, Activity parent, Listener onProductClickListener,
+    public ProductAdapter(ArrayList<Product> products, Activity parent, Listener onProductClickListener,
                           TextView amountTextView, TextView amountCurTextView) {
         this.products = products;
         this.onProductClickListener = onProductClickListener;
@@ -37,17 +33,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         ProductAdapter.amountTextView.setVisibility(View.INVISIBLE);
         ProductAdapter.amountCurTextView = amountCurTextView;
         ProductAdapter.amountCurTextView.setVisibility(View.INVISIBLE);
-        basket = new TreeMap<>();
     }
 
-    public static ArrayList<Product> getBasket() {
-        ArrayList<Product> answer = new ArrayList<>();
-        for (Product key :
-                basket.keySet()) {
-            key.setSelected(basket.get(key));
-            answer.add(key);
-        }
-        return answer;
+    public ArrayList<Product> getBasket() {
+        return products;
     }
 
     public static String getAmountString() {
@@ -99,7 +88,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
         private void bind(@NonNull Product product) {
 
-            notInBasket();
+            countTextView.setText(String.valueOf(product.getSelected()));
             nameTextView.setText(product.getName());
             priceTextView.setText(String.valueOf(product.getPriceAmount()));
             priceCurTextView.setText(product.getPriceCurrency());
@@ -108,6 +97,51 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             avatarImageView.setBackgroundResource(R.color.colorPrimary);
             Picasso.get().load(product.getPictureSource()).resize(80, 80).into(avatarImageView);
 
+            if (product.getSelected() > 0)
+                inBasket(product);
+            else notInBasket(product);
+        }
+
+        void inBasket(Product product) {
+            buyButton.setVisibility(View.INVISIBLE);
+            addButton.setVisibility(View.VISIBLE);
+            deleteButton.setVisibility(View.VISIBLE);
+            countTextView.setVisibility(View.VISIBLE);
+            addButton.setOnClickListener(v1 -> {
+                int selected = Integer.valueOf(countTextView.getText().toString());
+                if (selected == product.getCount()) {
+                    Toast.makeText(parent, "Больше нет", Toast.LENGTH_SHORT).show();
+                } else {
+                    countTextView.setText(String.format(Integer.toString(selected + 1), ""));
+                    amountTextView.setText(String.valueOf(
+                            product.getPriceAmount() + Integer.valueOf(amountTextView.getText().toString())));
+                    product.setSelected(product.getSelected() + 1);
+                }
+            });
+            deleteButton.setOnClickListener(v1 -> {
+                int selected = Integer.valueOf(countTextView.getText().toString());
+                amountTextView.setText(String.valueOf(
+                        Integer.valueOf(amountTextView.getText().toString()) - product.getPriceAmount()));
+                if (amountTextView.getText().toString().equals("0")) {
+                    amountTextView.setVisibility(View.INVISIBLE);
+                    amountCurTextView.setVisibility(View.INVISIBLE);
+                }
+                if (selected == 1) {
+                    notInBasket(product);
+                    product.setSelected(product.getSelected() - 1);
+                } else {
+                    countTextView.setText(String.format(Integer.toString(selected - 1), ""));
+                    product.setSelected(product.getSelected() - 1);
+                }
+            });
+        }
+
+        void notInBasket(Product product) {
+            countTextView.setText("1");
+            buyButton.setVisibility(View.VISIBLE);
+            addButton.setVisibility(View.INVISIBLE);
+            deleteButton.setVisibility(View.INVISIBLE);
+            countTextView.setVisibility(View.INVISIBLE);
             buyButton.setOnClickListener(v -> {
                 if (amountTextView.getText().toString().isEmpty() || amountTextView.getText().toString().equals("0")) {
                     amountTextView.setVisibility(View.VISIBLE);
@@ -118,51 +152,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                     amountTextView.setText(String.valueOf(product.getPriceAmount() +
                             Integer.valueOf(amountTextView.getText().toString())));
                 }
-                inBasket();
-                basket.put(product, 1);
-                addButton.setOnClickListener(v1 -> {
-                    int selected = Integer.valueOf(countTextView.getText().toString());
-                    if (selected == product.getCount()) {
-                        Toast.makeText(parent, "Больше нет", Toast.LENGTH_SHORT).show();
-                    } else {
-                        countTextView.setText(String.format(Integer.toString(selected + 1), ""));
-                        amountTextView.setText(String.valueOf(
-                                product.getPriceAmount() + Integer.valueOf(amountTextView.getText().toString())));
-                        basket.put(product, basket.get(product) + 1);
-                    }
-                });
-                deleteButton.setOnClickListener(v1 -> {
-                    int selected = Integer.valueOf(countTextView.getText().toString());
-                    amountTextView.setText(String.valueOf(
-                            Integer.valueOf(amountTextView.getText().toString()) - product.getPriceAmount()));
-                    if (amountTextView.getText().toString().equals("0")) {
-                        amountTextView.setVisibility(View.INVISIBLE);
-                        amountCurTextView.setVisibility(View.INVISIBLE);
-                    }
-                    if (selected == 1) {
-                        notInBasket();
-                        basket.remove(product);
-                    } else {
-                        countTextView.setText(String.format(Integer.toString(selected - 1), ""));
-                        basket.put(product, basket.get(product) - 1);
-                    }
-                });
+                inBasket(product);
+                product.setSelected(product.getSelected() + 1);
             });
-        }
-
-        void inBasket() {
-            buyButton.setVisibility(View.INVISIBLE);
-            addButton.setVisibility(View.VISIBLE);
-            deleteButton.setVisibility(View.VISIBLE);
-            countTextView.setVisibility(View.VISIBLE);
-        }
-
-        void notInBasket() {
-            countTextView.setText("1");
-            buyButton.setVisibility(View.VISIBLE);
-            addButton.setVisibility(View.INVISIBLE);
-            deleteButton.setVisibility(View.INVISIBLE);
-            countTextView.setVisibility(View.INVISIBLE);
         }
 
     }

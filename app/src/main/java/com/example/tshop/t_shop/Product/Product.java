@@ -18,7 +18,7 @@ public class Product implements Serializable, Comparable<Product> {
     public Product(String name, String description,
                    String pictureSource, String pictureSubnail,
                    int priceAmount, String priceCurrency,
-                   String valueAmount, String valueUnits, int count) {
+                   String valueAmount, String valueUnits, int count, int selected) {
         this.name = name;
         this.description = description;
         this.pictureSource = pictureSource;
@@ -28,6 +28,7 @@ public class Product implements Serializable, Comparable<Product> {
         this.valueAmount = valueAmount;
         this.valueUnits = valueUnits;
         this.count = count;
+        this.selected = selected;
     }
 
     public String getName() {

@@ -15,11 +15,12 @@ import com.example.tshop.t_shop.Product.Product;
 import com.example.tshop.t_shop.R;
 import com.squareup.picasso.Picasso;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.ListIterator;
 
 public class BasketActivity extends AppCompatActivity {
 
-    List<Product> products;
+    ArrayList<Product> products;
 
     BasketAdapter basketAdapter;
     RecyclerView recyclerView;
@@ -92,12 +93,20 @@ public class BasketActivity extends AppCompatActivity {
         if (descCardView.getVisibility() == View.VISIBLE) {
             descCardView.setVisibility(View.INVISIBLE);
             blockView.setVisibility(View.INVISIBLE);
-        } else
+        } else {
             super.onBackPressed();
+        }
     }
 
-    private List<Product> generateStudentList() {
-        return (List<Product>) getIntent().getSerializableExtra("data");
+    private ArrayList<Product> generateStudentList() {
+        ArrayList<Product> data = (ArrayList<Product>) getIntent().getSerializableExtra("data");
+        ListIterator<Product> i = data.listIterator();
+        while (i.hasNext()) {
+            Product p = i.next(); // must be called before you can call i.remove()
+            if (p.getSelected() == 0)
+                i.remove();
+        }
+        return data;
     }
 
 }
