@@ -115,4 +115,12 @@ public class Product implements Serializable, Comparable<Product> {
     public int compareTo(Product o) {
         return name.compareTo(o.name);
     }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "name='" + name + '\'' +
+                ", selected=" + selected +
+                '}';
+    }
 }

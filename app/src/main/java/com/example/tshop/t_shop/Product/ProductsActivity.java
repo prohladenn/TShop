@@ -2,6 +2,7 @@ package com.example.tshop.t_shop.Product;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
@@ -70,7 +71,7 @@ public class ProductsActivity extends AppCompatActivity {
             Intent intent = new Intent(ProductsActivity.this, BasketActivity.class);
             intent.putExtra("data", productAdapter.getBasket());
             intent.putExtra("sum", ProductAdapter.getAmountString());
-            startActivity(intent);
+            startActivityForResult(intent, 1234);
         });
     }
 
@@ -101,9 +102,27 @@ public class ProductsActivity extends AppCompatActivity {
             super.onBackPressed();
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1234 && resultCode == RESULT_OK && data != null) {
+            ArrayList<Product> help = (ArrayList<Product>) data.getSerializableExtra("data");
+            for (Product p1 : products) {
+                for (Product p : help) {
+                    if (p1.getName().equals(p.getName()))
+                        p1.setSelected(p.getSelected());
+                }
+            }
+            productAdapter = new ProductAdapter(products, this, this::onProductClick, amountTextView, amountCurTextView);
+            recyclerView.setAdapter(productAdapter);
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+            recyclerView.setLayoutManager(linearLayoutManager);
+        }
+    }
+
     /*
-        TODO ДОСТАТЬ ЭТИХ ПАРНЕЙ ИЗ БАЗЫ
-         */
+            TODO ДОСТАТЬ ЭТИХ ПАРНЕЙ ИЗ БАЗЫ
+             */
     private ArrayList<Product> generateStudentList() {
         ArrayList<Product> products = new ArrayList<>();
         products.add(

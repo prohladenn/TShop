@@ -1,5 +1,6 @@
 package com.example.tshop.t_shop.Basket;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
@@ -94,7 +95,11 @@ public class BasketActivity extends AppCompatActivity {
             descCardView.setVisibility(View.INVISIBLE);
             blockView.setVisibility(View.INVISIBLE);
         } else {
-            super.onBackPressed();
+            products = basketAdapter.getBasket();
+            Intent intent = new Intent();
+            intent.putExtra("data", products);
+            setResult(RESULT_OK, intent);
+            finish();
         }
     }
 

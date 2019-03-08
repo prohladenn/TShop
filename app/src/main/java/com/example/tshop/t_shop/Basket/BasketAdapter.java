@@ -36,6 +36,10 @@ public class BasketAdapter extends RecyclerView.Adapter<BasketAdapter.ProductVie
         BasketAdapter.amountCurTextView.setText(products.get(0).getPriceCurrency());
     }
 
+    public ArrayList<Product> getBasket() {
+        return products;
+    }
+
     @NonNull
     @Override
     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
