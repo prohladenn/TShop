@@ -17,7 +17,7 @@
         android:hint="@string/register_number"
         android:inputType="number"
         android:padding="10dp"
-        android:textColor="@color/colorText"
+        android:textColor="@color/grayText"
         android:textSize="18sp" />
 
     <FrameLayout
@@ -37,7 +37,7 @@
             android:background="@color/colorPrimary"
             android:gravity="center"
             android:text="@string/register_next"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/white"
             android:textSize="20sp" />
 
     </FrameLayout>
@@ -58,7 +58,7 @@
             android:background="#000"
             android:gravity="center"
             android:text="@string/register_resend"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/white"
             android:textSize="20sp" />
 
     </FrameLayout>

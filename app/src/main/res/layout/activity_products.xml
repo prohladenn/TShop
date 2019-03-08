@@ -29,7 +29,7 @@
             android:layout_marginTop="10dp"
             android:gravity="center"
             android:text="Список товаров"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/white"
             android:textSize="22sp" />
 
     </FrameLayout>
@@ -41,7 +41,6 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
-        android:background="@color/colorAccent"
         android:orientation="vertical"
 
         app:layout_constraintBottom_toTopOf="@id/products_frame"
@@ -51,7 +50,82 @@
 
     </android.support.v7.widget.RecyclerView>
 
-    <FrameLayout
+    <android.support.v7.widget.CardView
+        android:id="@+id/product_desk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/product_desk_avatar"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/white"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/product_desk_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="Name"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/product_desk_avatar" />
+
+            <TextView
+                android:id="@+id/product_desk_value_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="Amount"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/product_desk_name" />
+
+            <TextView
+                android:id="@+id/product_desk_value_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="Unit"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintLeft_toRightOf="@id/product_desk_value_amount"
+                app:layout_constraintTop_toBottomOf="@id/product_desk_name" />
+
+            <TextView
+                android:id="@+id/product_desk_value_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Description \nDescription \nDescription \nDescription \nDescription"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/product_desk_value_amount" />
+
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.constraint.ConstraintLayout
         android:id="@+id/products_frame"
         android:layout_width="match_parent"
         android:layout_height="70dp"
@@ -69,28 +143,58 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
-            android:background="@color/colorPrimary">
+            android:background="@color/colorPrimary"
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left|center_vertical"
-                android:layout_marginStart="10dp"
-                android:text="В корзину"
-                android:textColor="@color/colorAccent"
-                android:textSize="20sp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
 
-            <TextView
-                android:id="@+id/products_text_amount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right|center_vertical"
-                android:layout_marginEnd="10dp"
-                android:textColor="@color/colorAccent"
-                android:textSize="20sp" />
 
-        </FrameLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="В корзину"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@id/products_button_basket"
+            app:layout_constraintStart_toStartOf="@id/products_button_basket"
+            app:layout_constraintTop_toTopOf="@id/products_button_basket" />
 
-    </FrameLayout>
+        <TextView
+            android:id="@+id/products_text_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@id/products_button_basket"
+            app:layout_constraintRight_toLeftOf="@id/products_text_amount_cur"
+            app:layout_constraintTop_toTopOf="@id/products_button_basket" />
+
+        <TextView
+            android:id="@+id/products_text_amount_cur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:text="р"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@id/products_button_basket"
+            app:layout_constraintRight_toRightOf="@id/products_button_basket"
+            app:layout_constraintTop_toTopOf="@id/products_button_basket" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+    <View
+        android:id="@+id/products_block"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.6"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
+

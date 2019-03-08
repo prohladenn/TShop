@@ -19,7 +19,6 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_margin="10dp"
-            android:background="@color/colorPrimary"
             android:contentDescription="Photo"
 
             app:layout_constraintBottom_toBottomOf="parent"
@@ -32,6 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:text="Марс молочный шоколад"
+            android:textColor="@color/black"
             android:textSize="18sp"
 
             app:layout_constraintLeft_toRightOf="@+id/product_item_image_photo"
@@ -58,7 +58,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="Купить"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/white"
                     android:textSize="18sp" />
 
             </FrameLayout>
@@ -81,7 +81,7 @@
                         android:background="@color/colorPrimary"
                         android:gravity="center"
                         android:text="+"
-                        android:textColor="@color/colorAccent"
+                        android:textColor="@color/white"
                         android:textSize="30sp" />
 
                 </android.support.v7.widget.CardView>
@@ -106,7 +106,7 @@
                         android:background="@color/colorPrimary"
                         android:gravity="center"
                         android:text="-"
-                        android:textColor="@color/colorAccent"
+                        android:textColor="@color/white"
                         android:textSize="30sp" />
 
                 </android.support.v7.widget.CardView>
@@ -119,13 +119,26 @@
             android:id="@+id/product_item_text_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_marginLeft="10dp"
             android:text="Бесценно"
+            android:textColor="@color/black"
             android:textSize="18sp"
 
             app:layout_constraintBottom_toBottomOf="@+id/product_item_frame_buttons"
             app:layout_constraintStart_toEndOf="@id/product_item_frame_buttons"
             app:layout_constraintTop_toTopOf="@+id/product_item_frame_buttons" />
+
+        <TextView
+            android:id="@+id/product_item_text_price_cur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="р"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+
+            app:layout_constraintBottom_toBottomOf="@+id/product_item_text_price"
+            app:layout_constraintStart_toEndOf="@id/product_item_text_price"
+            app:layout_constraintTop_toTopOf="@+id/product_item_text_price" />
 
     </android.support.constraint.ConstraintLayout>
 
