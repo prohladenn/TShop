@@ -1,5 +1,6 @@
 package com.example.tshop.t_shop.Product;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -19,13 +20,16 @@ import java.util.ArrayList;
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
 
     private final ArrayList<Product> products;
+    @SuppressLint("StaticFieldLeak")
     private static TextView amountTextView;
+    @SuppressLint("StaticFieldLeak")
     private static TextView amountCurTextView;
+    @SuppressLint("StaticFieldLeak")
     private static Activity parent;
     private final Listener onProductClickListener;
 
-    public ProductAdapter(ArrayList<Product> products, Activity parent, Listener onProductClickListener,
-                          TextView amountTextView, TextView amountCurTextView) {
+    ProductAdapter(ArrayList<Product> products, Activity parent, Listener onProductClickListener,
+                   TextView amountTextView, TextView amountCurTextView) {
         this.products = products;
         this.onProductClickListener = onProductClickListener;
         ProductAdapter.parent = parent;
@@ -35,11 +39,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         ProductAdapter.amountCurTextView.setVisibility(View.INVISIBLE);
     }
 
-    public ArrayList<Product> getBasket() {
+    ArrayList<Product> getBasket() {
         return products;
     }
 
-    public static String getAmountString() {
+    static String getAmountString() {
         return amountTextView.getText().toString();
     }
 
