@@ -2,7 +2,7 @@ package com.example.tshop.t_shop.Product;
 
 import java.io.Serializable;
 
-public class Product implements Serializable {
+public class Product implements Serializable, Comparable<Product> {
 
     private String name;
     private String description;
@@ -10,7 +10,7 @@ public class Product implements Serializable {
     private String pictureSubnail;
     private int priceAmount;
     private String priceCurrency;
-    private int valueAmount;
+    private String valueAmount;
     private String valueUnits;
     private int count;
     private int selected;
@@ -18,7 +18,7 @@ public class Product implements Serializable {
     public Product(String name, String description,
                    String pictureSource, String pictureSubnail,
                    int priceAmount, String priceCurrency,
-                   int valueAmount, String valueUnits, int count) {
+                   String valueAmount, String valueUnits, int count) {
         this.name = name;
         this.description = description;
         this.pictureSource = pictureSource;
@@ -78,11 +78,11 @@ public class Product implements Serializable {
         this.priceCurrency = priceCurrency;
     }
 
-    public int getValueAmount() {
+    public String getValueAmount() {
         return valueAmount;
     }
 
-    public void setValueAmount(int valueAmount) {
+    public void setValueAmount(String valueAmount) {
         this.valueAmount = valueAmount;
     }
 
@@ -108,5 +108,10 @@ public class Product implements Serializable {
 
     public void setSelected(int selected) {
         this.selected = selected;
+    }
+
+    @Override
+    public int compareTo(Product o) {
+        return name.compareTo(o.name);
     }
 }

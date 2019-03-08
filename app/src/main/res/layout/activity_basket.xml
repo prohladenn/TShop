@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:gravity="center"
-            android:text="Список товаров"
+            android:text="Корзина"
             android:textColor="@color/white"
             android:textSize="22sp" />
 
@@ -136,14 +136,14 @@
         app:layout_constraintRight_toRightOf="parent">
 
         <FrameLayout
-            android:id="@+id/basket_button_basket"
+            android:id="@+id/basket_button_buy"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_gravity="bottom"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
-            android:background="@color/colorPrimary"
+            android:background="@color/black"
 
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -154,12 +154,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:text="В корзину"
+            android:text="Оплата"
             android:textColor="@color/white"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@id/basket_button_basket"
-            app:layout_constraintStart_toStartOf="@id/basket_button_basket"
-            app:layout_constraintTop_toTopOf="@id/basket_button_basket" />
+            app:layout_constraintBottom_toBottomOf="@id/basket_button_buy"
+            app:layout_constraintStart_toStartOf="@id/basket_button_buy"
+            app:layout_constraintTop_toTopOf="@id/basket_button_buy" />
 
         <TextView
             android:id="@+id/basket_text_amount"
@@ -168,9 +168,9 @@
             android:text="0"
             android:textColor="@color/white"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@id/basket_button_basket"
+            app:layout_constraintBottom_toBottomOf="@id/basket_button_buy"
             app:layout_constraintRight_toLeftOf="@id/basket_text_amount_cur"
-            app:layout_constraintTop_toTopOf="@id/basket_button_basket" />
+            app:layout_constraintTop_toTopOf="@id/basket_button_buy" />
 
         <TextView
             android:id="@+id/basket_text_amount_cur"
@@ -180,9 +180,9 @@
             android:text="р"
             android:textColor="@color/white"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@id/basket_button_basket"
-            app:layout_constraintRight_toRightOf="@id/basket_button_basket"
-            app:layout_constraintTop_toTopOf="@id/basket_button_basket" />
+            app:layout_constraintBottom_toBottomOf="@id/basket_button_buy"
+            app:layout_constraintRight_toRightOf="@id/basket_button_buy"
+            app:layout_constraintTop_toTopOf="@id/basket_button_buy" />
 
 
     </android.support.constraint.ConstraintLayout>
